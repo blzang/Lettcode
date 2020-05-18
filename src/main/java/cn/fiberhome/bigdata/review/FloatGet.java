@@ -14,8 +14,6 @@ public class FloatGet {
 
             int T;
 
-
-
             T=(int)(F+0.5);
             System.out.println(T);
         }

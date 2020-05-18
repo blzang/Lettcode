@@ -21,71 +21,47 @@ import java.util.*;
  */
 public class MergeTableRecord {
 
-        public static void main(String[] args) {
-    //        test1();
+    public static void main(String[] args) {
 
-            Scanner scanner=new Scanner(System.in);
-            List<Integer> list1=new ArrayList<>();
-            List<Integer> list2=new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-            while (scanner.hasNext()){
-                int n= scanner.nextInt();
+        int n =Integer.parseInt(scanner.nextLine()) ;
 
-
-                // 将数据加入到两个队列中
-                for (int i = 0; i < n; i++) {
-                    String s = scanner.nextLine();
-                    String[] split = s.split("\\s+");
-                    list1.add(Integer.parseInt(split[0]));
-                    list2.add(Integer.parseInt(split[1]));
-                }
-            }
-            //数据清洗，对存放键值List遍历，并按照键值相同的value加起来存放在hashmap中
-            Map<Integer,Integer> map=new HashMap<>();
-            for (int i = 0; i < list1.size(); i++) {
-                if (map.containsKey(list1.get(i))){
-                    Integer v = map.get(list1.get(i));
-                    map.put(list1.get(i),list2.get(i)+v);
-                }else {
-                    map.put(list1.get(i),list2.get(i));
-                }
-            }
-
-            List<Integer> list3=new ArrayList<>();
-            list3.addAll(map.keySet());
-            Collections.sort(list3);
-
-
-            for (int i = 0; i < list3.size(); i++) {
-                System.out.println(list3.get(i)+" "+map.get(list3.get(i)));
-            }
-
+        List<String> paramList=new ArrayList<>();
+        for (int i = 0; i < n ; i++) {
+            String cparam=scanner.nextLine();
+            paramList.add(cparam);
         }
 
-        private static void test1() {
-        /*      String s="a n 0";
-              String[] s1 = s.split("\\s+");
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
 
-              for (int i = 0; i < s1.length; i++) {
-                  System.out.println(s1[i]);
-              }*/
-
-            List<Integer> list = new ArrayList<>();
-            list.add(1);
-            list.add(1);
-            list.add(10);
-            list.add(5);
-            list.add(4);
-
-    //        Collections.sort(list);
-            Collections.sort(list, new Comparator<Integer>() {
-                // 降序
-                @Override
-                public int compare(Integer o1, Integer o2) {
-                    return o2-o1;
-                }
-            });
-
-            System.out.println(list);
+        // 将数据加入到两个队列中
+        for (int i = 0; i < n; i++) {
+            String[] split = paramList.get(i).split(" ");
+            list1.add(Integer.parseInt(split[0]));
+            list2.add(Integer.parseInt(split[1]));
         }
+        //数据清洗，对存放键值List遍历，并按照键值相同的value加起来存放在hashmap中
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < list1.size(); i++) {
+            if (map.containsKey(list1.get(i))) {
+                Integer v = map.get(list1.get(i));
+                map.put(list1.get(i), list2.get(i) + v);
+            } else {
+                map.put(list1.get(i), list2.get(i));
+            }
+        }
+
+        List<Integer> list3 = new ArrayList<>();
+        list3.addAll(map.keySet());
+        Collections.sort(list3);
+
+
+        for (int i = 0; i < list3.size(); i++) {
+            System.out.println(list3.get(i) + " " + map.get(list3.get(i)));
+        }
+
+    }
+
 }
